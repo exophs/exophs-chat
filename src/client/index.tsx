@@ -74,14 +74,19 @@ function App() {
         </div>
         <div className="row">
           {names.map((nameOption) => (
-            <button
-              key={nameOption}
-              className="button button-primary"
-              style={{ margin: "5px" }}
-              onClick={() => setName(nameOption)}
-            >
-              {nameOption}
-            </button>
+        <button
+          key={nameOption}
+          className="button button-primary"
+          style={{ 
+            margin: "5px",
+            display: "flex",        // Add this
+            justifyContent: "center", // Add this
+            alignItems: "center"   // Add this
+              }}
+          onClick={() => setName(nameOption)}
+          >
+          {nameOption}
+        </button>
           ))}
         </div>
       </div>
@@ -101,7 +106,10 @@ function App() {
               width: "100%",
               padding: "5px",
               fontSize: "12px",
-            }}
+              display: "flex",        // Add this
+              justifyContent: "center", // Add this
+              alignItems: "center"   // Add this
+                }}
             onClick={() => setName(nameOption)}
           >
             {nameOption}
