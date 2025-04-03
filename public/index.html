@@ -13,6 +13,26 @@
     <script src="/dist/index.js" type="module" nonce="MzU0MjkwODYwMCw0Mjc3MDkzODg2"></script>
   </head>
   <body>
-    <div class="messages-container" id="root"></div>
+    <div class="chat-app">
+      <div class="sidebar">
+        <div class="sidebar-header">
+          <h3>Chats</h3>
+        </div>
+        <div class="conversation-list">
+          <div class="conversation active">General</div>
+          <div class="conversation">Support</div>
+          <div class="conversation">Team</div>
+        </div>
+      </div>
+      <div class="main-content">
+        <div class="messages" id="root">
+          <!-- Messages will appear here -->
+        </div>
+        <div class="input-area">
+          <input type="text" placeholder="Type a message..." class="message-input" />
+          <button class="send-button">Send</button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
