@@ -70,7 +70,7 @@ function App() {
     return (
       <div className="container">
         <div className="row">
-          <h4>Choose your username</h4>
+          <h4>Choose your user</h4>
         </div>
         <div className="row">
           {names.map((nameOption) => (
