@@ -13,7 +13,7 @@ import { nanoid } from "nanoid";
 import { names, type ChatMessage, type Message } from "../shared";
 
 function App() {
-  const [name] = useState(names[Math.floor(Math.random() * names.length)]);
+  const [name, setName] = useState<string | null>(null);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const { room } = useParams();
 
@@ -25,7 +25,6 @@ function App() {
       if (message.type === "add") {
         const foundIndex = messages.findIndex((m) => m.id === message.id);
         if (foundIndex === -1) {
-          // probably someone else who added a message
           setMessages((messages) => [
             ...messages,
             {
@@ -36,9 +35,6 @@ function App() {
             },
           ]);
         } else {
-          // this usually means we ourselves added a message
-          // and it was broadcasted back
-          // so let's replace the message with the new message
           setMessages((messages) => {
             return messages
               .slice(0, foundIndex)
@@ -70,51 +66,92 @@ function App() {
     },
   });
 
-  return (
-    <div className="chat container">
-      {messages.map((message) => (
-        <div key={message.id} className="row message">
-          <div className="two columns user">{message.user}</div>
-          <div className="ten columns">{message.content}</div>
+  if (!name) {
+    return (
+      <div className="container">
+        <div className="row">
+          <h4>Choose your username</h4>
         </div>
-      ))}
-      <form
-        className="row"
-        onSubmit={(e) => {
-          e.preventDefault();
-          const content = e.currentTarget.elements.namedItem(
-            "content",
-          ) as HTMLInputElement;
-          const chatMessage: ChatMessage = {
-            id: nanoid(8),
-            content: content.value,
-            user: name,
-            role: "user",
-          };
-          setMessages((messages) => [...messages, chatMessage]);
-          // we could broadcast the message here
+        <div className="row">
+          {names.map((nameOption) => (
+            <button
+              key={nameOption}
+              className="button button-primary"
+              style={{ margin: "5px" }}
+              onClick={() => setName(nameOption)}
+            >
+              {nameOption}
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
-          socket.send(
-            JSON.stringify({
-              type: "add",
-              ...chatMessage,
-            } satisfies Message),
-          );
-
-          content.value = "";
-        }}
-      >
-        <input
-          type="text"
-          name="content"
-          className="ten columns my-input-text"
-          placeholder={`Hello ${name}! Type a message...`}
-          autoComplete="off"
-        />
-        <button type="submit" className="send-message two columns">
-          Send
-        </button>
-      </form>
+  return (
+    <div className="chat container" style={{ display: "flex", height: "100%" }}>
+      <div className="sidebar" style={{ width: "100px", padding: "10px" }}>
+        <h6>Users</h6>
+        {names.map((nameOption) => (
+          <button
+            key={nameOption}
+            className={`button ${name === nameOption ? "button-primary" : ""}`}
+            style={{
+              margin: "5px 0",
+              width: "100%",
+              padding: "5px",
+              fontSize: "12px",
+            }}
+            onClick={() => setName(nameOption)}
+          >
+            {nameOption}
+          </button>
+        ))}
+      </div>
+      <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+        <div style={{ flex: 1, overflowY: "auto" }}>
+          {messages.map((message) => (
+            <div key={message.id} className="row message">
+              <div className="two columns user">{message.user}</div>
+              <div className="ten columns">{message.content}</div>
+            </div>
+          ))}
+        </div>
+        <form
+          className="row"
+          onSubmit={(e) => {
+            e.preventDefault();
+            const content = e.currentTarget.elements.namedItem(
+              "content",
+            ) as HTMLInputElement;
+            const chatMessage: ChatMessage = {
+              id: nanoid(8),
+              content: content.value,
+              user: name,
+              role: "user",
+            };
+            setMessages((messages) => [...messages, chatMessage]);
+            socket.send(
+              JSON.stringify({
+                type: "add",
+                ...chatMessage,
+              } satisfies Message),
+            );
+            content.value = "";
+          }}
+        >
+          <input
+            type="text"
+            name="content"
+            className="ten columns my-input-text"
+            placeholder={`Hello ${name}! Type a message...`}
+            autoComplete="off"
+          />
+          <button type="submit" className="send-message two columns">
+            Send
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
