@@ -206,8 +206,9 @@ function App() {
       padding: "10px",
       borderRadius: "4px",
       flex: 1,
-      height: "40px", // Set explicit height
-      boxSizing: "border-box" // Include padding in height calculation
+      height: "40px",
+      boxSizing: "border-box",
+      lineHeight: "20px" // Explicit line height to match content area
     }}
     placeholder={`Hello ${name}! Type a message...`}
     autoComplete="off"
@@ -218,15 +219,22 @@ function App() {
       backgroundColor: "#bb86fc",
       color: "#121212",
       border: "none",
-      padding: "0 20px", // Remove vertical padding since we're setting height
+      padding: "0 20px",
       borderRadius: "4px",
       fontWeight: "bold",
       whiteSpace: "nowrap",
-      height: "40px", // Match input height
-      display: "flex",
+      height: "40px",
+      boxSizing: "border-box",
+      display: "inline-flex",
       alignItems: "center",
       justifyContent: "center",
-      boxSizing: "border-box"
+      fontSize: "14px", // Match input's font size
+      lineHeight: "1", // Reset line height
+      cursor: "pointer",
+      // These help with consistent rendering across browsers
+      appearance: "none",
+      verticalAlign: "middle",
+      userSelect: "none"
     }}
   >
     Send
