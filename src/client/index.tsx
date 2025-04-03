@@ -172,7 +172,7 @@ function App() {
     backgroundColor: "#1e1e1e",
     borderTop: "1px solid #333",
     display: "flex",
-    alignItems: "center",
+    alignItems: "stretch", // Changed from 'center' to 'stretch'
     gap: "10px"
   }}
   onSubmit={(e) => {
@@ -208,7 +208,7 @@ function App() {
       flex: 1,
       height: "40px",
       boxSizing: "border-box",
-      lineHeight: "20px" // Explicit line height to match content area
+      margin: 0 // Ensure no margin is affecting alignment
     }}
     placeholder={`Hello ${name}! Type a message...`}
     autoComplete="off"
@@ -222,19 +222,15 @@ function App() {
       padding: "0 20px",
       borderRadius: "4px",
       fontWeight: "bold",
-      whiteSpace: "nowrap",
       height: "40px",
       boxSizing: "border-box",
-      display: "inline-flex",
+      display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      fontSize: "14px", // Match input's font size
-      lineHeight: "1", // Reset line height
-      cursor: "pointer",
+      margin: 0, // Ensure no margin is affecting alignment
       // These help with consistent rendering across browsers
       appearance: "none",
-      verticalAlign: "middle",
-      userSelect: "none"
+      lineHeight: "normal" // Reset line height
     }}
   >
     Send
