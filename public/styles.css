@@ -1,51 +1,70 @@
+/* Dark Theme Chat Styles */
 :root {
-  --bg-dark: #0f0f0f;
-  --bg-darker: #080808;
-  --accent: #4a80f0;
-  --text-primary: #f0f0f0;
-  --text-secondary: #aaaaaa;
-  --message-received: #222;
-  --message-sent: #2e4a6e;
+  --primary-bg: #121212;
+  --secondary-bg: #1e1e1e;
+  --message-bg: #252525;
+  --my-message-bg: #2e4a6e;
+  --primary-text: #e0e0e0;
+  --secondary-text: #a0a0a0;
+  --accent-color: #4a80f0;
+  --border-color: #333;
+  --input-bg: #2d2d2d;
 }
 
-body {
+body, html {
+  height: 100%;
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', system-ui, sans-serif;
-  background-color: var(--bg-dark);
-  color: var(--text-primary);
-  height: 100vh;
-  overflow: hidden;
+  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
 }
 
-.app-container {
+.chat-app {
   display: flex;
-  height: 100%;
+  height: 100vh;
 }
 
-/* Sidebar - ultra minimal */
+/* Sidebar Styles */
 .sidebar {
-  width: 80px;
-  background-color: var(--bg-darker);
-  border-right: 1px solid #222;
-  padding-top: 20px;
+  width: 250px;
+  background-color: var(--secondary-bg);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
 }
 
-.menu-item {
-  padding: 14px 0;
-  text-align: center;
-  font-size: 0.8rem;
+.sidebar-header {
+  padding: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.conversation-list {
+  padding: 10px 0;
+}
+
+.conversation {
+  padding: 12px 15px;
   cursor: pointer;
-  border-left: 3px solid transparent;
+  transition: background-color 0.2s;
 }
 
-.menu-item.active {
-  border-left: 3px solid var(--accent);
-  background-color: rgba(74, 128, 240, 0.1);
+.conversation:hover {
+  background-color: var(--message-bg);
 }
 
-/* Chat container */
-.chat-container {
+.conversation.active {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+/* Main Content Area */
+.main-content {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -60,67 +79,88 @@ body {
   gap: 8px;
 }
 
-/* Compact message bubbles */
+/* Message Bubbles */
 .message {
-  max-width: 55%;
+  max-width: 60%;
   padding: 8px 12px;
   border-radius: 12px;
-  font-size: 0.9rem;
   line-height: 1.3;
+  font-size: 0.9rem;
+  word-wrap: break-word;
 }
 
-.message.received {
-  align-self: flex-start;
-  background-color: var(--message-received);
-  border-bottom-left-radius: 4px;
-}
-
-.message.sent {
+.message.user {
   align-self: flex-end;
-  background-color: var(--message-sent);
+  background-color: var(--my-message-bg);
   border-bottom-right-radius: 4px;
 }
 
-.message-time {
+.message.other {
+  align-self: flex-start;
+  background-color: var(--message-bg);
+  border-bottom-left-radius: 4px;
+}
+
+.message .user {
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin-bottom: 2px;
+  color: var(--accent-color);
+}
+
+.message .timestamp {
   font-size: 0.7rem;
-  color: var(--text-secondary);
+  color: var(--secondary-text);
   text-align: right;
   margin-top: 2px;
 }
 
-/* Input area */
-.input-container {
+/* Input Area */
+.input-area {
   padding: 12px;
-  background-color: var(--bg-darker);
-  border-top: 1px solid #222;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--secondary-bg);
   display: flex;
   gap: 8px;
 }
 
-.input-container input {
+.message-input {
   flex: 1;
   padding: 10px 12px;
   border: none;
   border-radius: 18px;
-  background-color: #222;
-  color: var(--text-primary);
+  background-color: var(--input-bg);
+  color: var(--primary-text);
   font-size: 0.9rem;
   outline: none;
 }
 
-.input-container button {
+.message-input::placeholder {
+  color: var(--secondary-text);
+}
+
+.send-button {
   padding: 0 16px;
   border: none;
   border-radius: 18px;
-  background-color: var(--accent);
+  background-color: var(--accent-color);
   color: white;
   font-weight: 500;
   cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.send-button:hover {
+  background-color: #3a70d8;
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-bg);
 }
 
 ::-webkit-scrollbar-thumb {
