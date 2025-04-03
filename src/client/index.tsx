@@ -165,64 +165,66 @@ function App() {
             </div>
           ))}
         </div>
-        <form
-          className="row"
-          style={{
-            padding: "15px",
-            backgroundColor: "#1e1e1e",
-            borderTop: "1px solid #333"
-          }}
-          onSubmit={(e) => {
-            e.preventDefault();
-            const content = e.currentTarget.elements.namedItem(
-              "content",
-            ) as HTMLInputElement;
-            const chatMessage: ChatMessage = {
-              id: nanoid(8),
-              content: content.value,
-              user: name,
-              role: "user",
-            };
-            setMessages((messages) => [...messages, chatMessage]);
-            socket.send(
-              JSON.stringify({
-                type: "add",
-                ...chatMessage,
-              } satisfies Message),
-            );
-            content.value = "";
-          }}
-        >
-          <input
-            type="text"
-            name="content"
-            className="ten columns my-input-text"
-            style={{
-              backgroundColor: "#2d2d2d",
-              color: "#e0e0e0",
-              border: "1px solid #333",
-              padding: "10px",
-              borderRadius: "4px",
-              marginRight: "10px"
-            }}
-            placeholder={`Hello ${name}! Type a message...`}
-            autoComplete="off"
-          />
-          <button 
-            type="submit" 
-            className="send-message two columns"
-            style={{
-              backgroundColor: "#bb86fc",
-              color: "#121212",
-              border: "none",
-              padding: "10px",
-              borderRadius: "4px",
-              fontWeight: "bold"
-            }}
-          >
-            Send
-          </button>
-        </form>
+<form
+  className="row"
+  style={{
+    padding: "15px",
+    backgroundColor: "#1e1e1e",
+    borderTop: "1px solid #333",
+    display: "flex",        // Add flex display
+    alignItems: "center",   // Vertically center items
+    gap: "10px"             // Add spacing between elements
+  }}
+  onSubmit={(e) => {
+    e.preventDefault();
+    const content = e.currentTarget.elements.namedItem(
+      "content",
+    ) as HTMLInputElement;
+    const chatMessage: ChatMessage = {
+      id: nanoid(8),
+      content: content.value,
+      user: name,
+      role: "user",
+    };
+    setMessages((messages) => [...messages, chatMessage]);
+    socket.send(
+      JSON.stringify({
+        type: "add",
+        ...chatMessage,
+      } satisfies Message),
+    );
+    content.value = "";
+  }}
+>
+  <input
+    type="text"
+    name="content"
+    style={{
+      backgroundColor: "#2d2d2d",
+      color: "#e0e0e0",
+      border: "1px solid #333",
+      padding: "10px",
+      borderRadius: "4px",
+      flex: 1                  // Take up remaining space
+    }}
+    placeholder={`Hello ${name}! Type a message...`}
+    autoComplete="off"
+  />
+  <button 
+    type="submit" 
+    style={{
+      backgroundColor: "#bb86fc",
+      color: "#121212",
+      border: "none",
+      padding: "10px 20px",
+      borderRadius: "4px",
+      fontWeight: "bold",
+      whiteSpace: "nowrap"     // Prevent text wrapping
+    }}
+  >
+    Send
+  </button>
+</form>
       </div>
     </div>
   );
