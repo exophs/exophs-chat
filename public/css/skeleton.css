@@ -265,7 +265,7 @@ a {
   color: #1eaedb;
 }
 a:hover {
-  color: #0fa0ce;
+  color: rgb(168, 105, 245);
 }
 
 /* Buttons
