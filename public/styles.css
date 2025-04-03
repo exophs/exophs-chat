@@ -1,15 +1,11 @@
-/* Dark Theme Styles */
+/* Minimal Dark Theme Chat Styles */
 :root {
   --primary-bg: #121212;
-  --secondary-bg: #1e1e1e;
-  --tertiary-bg: #2d2d2d;
+  --message-bg: #252525;
+  --my-message-bg: #2e4a6e;
   --primary-text: #e0e0e0;
   --secondary-text: #a0a0a0;
   --accent-color: #4a80f0;
-  --border-color: #333;
-  --message-bg: #252525;
-  --my-message-bg: #2e4a6e;
-  --input-bg: #2d2d2d;
 }
 
 body, html {
@@ -21,55 +17,8 @@ body, html {
   color: var(--primary-text);
 }
 
-.chat-app {
-  display: flex;
+.messages-container {
   height: 100vh;
-  overflow: hidden;
-}
-
-.sidebar {
-  width: 280px;
-  background-color: var(--secondary-bg);
-  border-right: 1px solid var(--border-color);
-  display: flex;
-  flex-direction: column;
-}
-
-.sidebar-header {
-  padding: 20px;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.sidebar-header h3 {
-  margin: 0;
-  font-size: 1.2rem;
-  color: var(--primary-text);
-}
-
-.conversation-list {
-  flex: 1;
-  overflow-y: auto;
-}
-
-.chat-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--primary-bg);
-}
-
-.chat-header {
-  padding: 20px;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.chat-header h3 {
-  margin: 0;
-  font-size: 1.2rem;
-}
-
-.messages {
-  flex: 1;
   padding: 20px;
   overflow-y: auto;
   display: flex;
@@ -111,69 +60,20 @@ body, html {
   margin-top: 4px;
 }
 
-.message-input {
-  display: flex;
-  padding: 15px;
-  border-top: 1px solid var(--border-color);
-  background-color: var(--secondary-bg);
-}
-
-.message-input-field {
-  flex: 1;
-  padding: 12px 15px;
-  border: none;
-  border-radius: 20px;
-  background-color: var(--input-bg);
-  color: var(--primary-text);
-  font-size: 1rem;
-  outline: none;
-}
-
-.message-input-field::placeholder {
-  color: var(--secondary-text);
-}
-
-.send-button {
-  margin-left: 10px;
-  padding: 0 20px;
-  border: none;
-  border-radius: 20px;
-  background-color: var(--accent-color);
-  color: white;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.send-button:hover {
-  background-color: #3a70d8;
-}
-
 /* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--secondary-bg);
+  background: var(--primary-bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--tertiary-bg);
+  background: #333;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-  .sidebar {
-    width: 80px;
-  }
-  
-  .sidebar-header h3 {
-    display: none;
-  }
+  background: #444;
 }
