@@ -22,7 +22,7 @@ Outside of this repo, you can start a new project with this template using [C3](
 npm create cloudflare@latest -- --template=cloudflare/templates/exophs-worker
 ```
 
-A live public deployment of this template is available at [https://exophs-worker.templates.workers.dev](https://exophs-worker.templates.workers.dev)
+A live public deployment of this template is available at [https://exophs-worker.bezeski.workers.dev](https://exophs-worker.bezeski.workers.dev)
 
 ## Setup Steps
 
