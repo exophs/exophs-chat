@@ -171,9 +171,9 @@ function App() {
     padding: "15px",
     backgroundColor: "#1e1e1e",
     borderTop: "1px solid #333",
-    display: "flex",        // Add flex display
-    alignItems: "center",   // Vertically center items
-    gap: "10px"             // Add spacing between elements
+    display: "flex",
+    alignItems: "center",
+    gap: "10px"
   }}
   onSubmit={(e) => {
     e.preventDefault();
@@ -205,7 +205,9 @@ function App() {
       border: "1px solid #333",
       padding: "10px",
       borderRadius: "4px",
-      flex: 1                  // Take up remaining space
+      flex: 1,
+      height: "40px", // Set explicit height
+      boxSizing: "border-box" // Include padding in height calculation
     }}
     placeholder={`Hello ${name}! Type a message...`}
     autoComplete="off"
@@ -216,10 +218,15 @@ function App() {
       backgroundColor: "#bb86fc",
       color: "#121212",
       border: "none",
-      padding: "10px 20px",
+      padding: "0 20px", // Remove vertical padding since we're setting height
       borderRadius: "4px",
       fontWeight: "bold",
-      whiteSpace: "nowrap"     // Prevent text wrapping
+      whiteSpace: "nowrap",
+      height: "40px", // Match input height
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      boxSizing: "border-box"
     }}
   >
     Send
