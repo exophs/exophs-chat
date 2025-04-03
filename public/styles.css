@@ -18,7 +18,8 @@ html {
   justify-content: flex-end;
   overflow-y: auto;
   height: 100%;
-  /* padding: 10px; */
+  max-width: 800px; /* Adjust this value to control chat width */
+  margin: 0 auto; /* This centers the chat */
 }
 
 .message {
