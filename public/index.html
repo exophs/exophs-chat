@@ -11,11 +11,91 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" type="image/ico" href="favicon.ico" />
     <script src="/dist/index.js" type="module" nonce="MzU0MjkwODYwMCw0Mjc3MDkzODg2"></script>
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      #root {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        overflow-y: auto;
+        height: 100%;
+        background: #ffffff;
+        border-radius: 8px;
+        padding: 20px;
+      }
+
+      .message {
+        margin-bottom: 10px;
+        padding: 8px 12px;
+        background: white;
+        border-radius: 4px;
+      }
+
+      .message .user {
+        font-weight: bold;
+      }
+
+      .my-input-text::placeholder {
+        color: #ccc;
+      }
+
+      .send-message {
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .send-message input {
+        flex-grow: 1;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        height: 40px;
+        box-sizing: border-box;
+      }
+
+      .send-message button {
+        padding: 0 15px;
+        height: 40px;
+        background: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 80px;
+      }
+
+      .send-message button:hover {
+        background: #45a049;
+      }
+    </style>
   </head>
   <body>
     <div class="container" style="width: 95%; height: 100%">
       <div class="row" style="height: 100%; display: flex; justify-content: center;">
         <div class="two-thirds column" id="root" style="max-width: 800px;">
+          <!-- Chat messages will go here -->
+          <div class="message">
+            <span class="user">User:</span> Hello there!
+          </div>
+          <div class="message">
+            <span class="user">Bot:</span> Hi! How can I help you?
+          </div>
+          
+          <!-- Input area -->
           <div class="send-message">
             <input type="text" class="my-input-text" placeholder="Type your message...">
             <button type="button">SEND</button>
