@@ -3,36 +3,34 @@
   <head>
     <meta charset="utf-8" />
     <title>Private Chat</title>
+    <meta name="description" content="Secure private messaging" />
+    <meta name="author" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      /* CSS will go here */
-    </style>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/skeleton.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/ico" href="favicon.ico" />
+    <script src="/dist/index.js" type="module" nonce="MzU0MjkwODYwMCw0Mjc3MDkzODg2"></script>
   </head>
   <body>
-    <div class="app-container">
+    <div class="chat-app">
       <div class="sidebar">
-        <div class="sidebar-menu">
-          <div class="menu-item active">Chats</div>
-          <div class="menu-item">Contacts</div>
-          <div class="menu-item">Settings</div>
+        <div class="sidebar-header">
+          <h3>Chats</h3>
+        </div>
+        <div class="conversation-list">
+          <div class="conversation active">General</div>
+          <div class="conversation">Support</div>
+          <div class="conversation">Team</div>
         </div>
       </div>
-      
-      <div class="chat-container">
+      <div class="main-content">
         <div class="messages" id="root">
-          <div class="message received">
-            <div class="message-content">Hey there! How's it going?</div>
-            <div class="message-time">10:30 AM</div>
-          </div>
-          <div class="message sent">
-            <div class="message-content">Pretty good! Working on the project.</div>
-            <div class="message-time">10:31 AM</div>
-          </div>
+          <!-- Messages will appear here -->
         </div>
-        
-        <div class="input-container">
-          <input type="text" placeholder="Type a message..." />
-          <button>Send</button>
+        <div class="input-area">
+          <input type="text" placeholder="Type a message..." class="message-input" />
+          <button class="send-button">Send</button>
         </div>
       </div>
     </div>
