@@ -34,10 +34,13 @@ html {
   color: #ccc;
 }
 
-/* Optional: Style for the message input area */
+/* Add these styles to your existing CSS */
+
 .send-message {
   margin-top: 15px;
   display: flex;
+  align-items: center; /* This aligns the input and button vertically */
+  gap: 8px; /* Adds some space between input and button */
 }
 
 .send-message input {
@@ -45,4 +48,24 @@ html {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
+  height: 40px; /* Set a fixed height to match the button */
+  box-sizing: border-box; /* Ensures padding is included in height */
+}
+
+.send-message button {
+  padding: 0 15px; /* Horizontal padding only */
+  height: 40px; /* Match the input height */
+  background: #4CAF50; /* Example button color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  min-width: 80px; /* Give the button a minimum width */
+}
+
+.send-message button:hover {
+  background: #45a049; /* Darker shade on hover */
 }
