@@ -14,6 +14,7 @@
   </head>
   <body>
     <div class="chat-app">
+      <!-- Tight sidebar pushed all the way left -->
       <div class="sidebar">
         <div class="sidebar-header">
           <h3>Chats</h3>
@@ -24,10 +25,23 @@
           <div class="conversation">Team</div>
         </div>
       </div>
+      
+      <!-- Main content area -->
       <div class="main-content">
         <div class="messages" id="root">
           <!-- Messages will appear here -->
+          <div class="message other">
+            <div class="user">Alex</div>
+            <div class="text">Hey there! How's it going?</div>
+            <div class="timestamp">10:30 AM</div>
+          </div>
+          <div class="message user">
+            <div class="text">Pretty good! Working on the project.</div>
+            <div class="timestamp">10:31 AM</div>
+          </div>
         </div>
+        
+        <!-- Input area at bottom -->
         <div class="input-area">
           <input type="text" placeholder="Type a message..." class="message-input" />
           <button class="send-button">Send</button>
