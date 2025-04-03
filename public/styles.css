@@ -1,169 +1,49 @@
-/* Dark Theme Chat Styles */
-:root {
-  --primary-bg: #121212;
-  --secondary-bg: #1e1e1e;
-  --message-bg: #252525;
-  --my-message-bg: #2e4a6e;
-  --primary-text: #e0e0e0;
-  --secondary-text: #a0a0a0;
-  --accent-color: #4a80f0;
-  --border-color: #333;
-  --input-bg: #2d2d2d;
-}
-
-body, html {
+body,
+html {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
-  background-color: var(--primary-bg);
-  color: var(--primary-text);
-}
-
-.chat-app {
-  display: flex;
-  height: 100vh;
-}
-
-/* Sidebar Styles */
-.sidebar {
-  width: 250px;
-  background-color: var(--secondary-bg);
-  border-right: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
 }
 
-.sidebar-header {
-  padding: 15px;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.sidebar-header h3 {
-  margin: 0;
-  font-size: 1.1rem;
-}
-
-.conversation-list {
-  padding: 10px 0;
-}
-
-.conversation {
-  padding: 12px 15px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.conversation:hover {
-  background-color: var(--message-bg);
-}
-
-.conversation.active {
-  background-color: var(--accent-color);
-  color: white;
-}
-
-/* Main Content Area */
-.main-content {
+#root {
   flex: 1;
   display: flex;
   flex-direction: column;
-}
-
-.messages {
-  flex: 1;
-  padding: 15px;
+  justify-content: flex-end;
   overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  height: 100%;
+  background: #f5f5f5; /* Optional: adds background to chat area */
+  border-radius: 8px; /* Optional: rounds corners */
+  padding: 20px; /* Adds some inner spacing */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Optional: adds subtle shadow */
 }
 
-/* Message Bubbles */
 .message {
-  max-width: 60%;
+  margin-bottom: 10px;
   padding: 8px 12px;
-  border-radius: 12px;
-  line-height: 1.3;
-  font-size: 0.9rem;
-  word-wrap: break-word;
-}
-
-.message.user {
-  align-self: flex-end;
-  background-color: var(--my-message-bg);
-  border-bottom-right-radius: 4px;
-}
-
-.message.other {
-  align-self: flex-start;
-  background-color: var(--message-bg);
-  border-bottom-left-radius: 4px;
+  background: white;
+  border-radius: 4px;
 }
 
 .message .user {
-  font-weight: 600;
-  font-size: 0.8rem;
-  margin-bottom: 2px;
-  color: var(--accent-color);
+  font-weight: bold;
 }
 
-.message .timestamp {
-  font-size: 0.7rem;
-  color: var(--secondary-text);
-  text-align: right;
-  margin-top: 2px;
+.my-input-text::placeholder {
+  color: #ccc;
 }
 
-/* Input Area */
-.input-area {
-  padding: 12px;
-  border-top: 1px solid var(--border-color);
-  background-color: var(--secondary-bg);
+/* Optional: Style for the message input area */
+.send-message {
+  margin-top: 15px;
   display: flex;
-  gap: 8px;
 }
 
-.message-input {
-  flex: 1;
-  padding: 10px 12px;
-  border: none;
-  border-radius: 18px;
-  background-color: var(--input-bg);
-  color: var(--primary-text);
-  font-size: 0.9rem;
-  outline: none;
-}
-
-.message-input::placeholder {
-  color: var(--secondary-text);
-}
-
-.send-button {
-  padding: 0 16px;
-  border: none;
-  border-radius: 18px;
-  background-color: var(--accent-color);
-  color: white;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.send-button:hover {
-  background-color: #3a70d8;
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--primary-bg);
-}
-
-::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 3px;
+.send-message input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
